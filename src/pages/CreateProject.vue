@@ -27,8 +27,20 @@
         :disabled="loading"
       />
     </div>
-    <n-space justify="end">
-      <n-button @click="handleSubmit" :loading="loading">新增專案</n-button>
+    <n-space justify="end" align="center">
+      <n-tag
+        :bordered="false"
+        v-if="!user.isDiscordConnected || !user.isUserCompleted"
+      >
+        請先填寫個人資料及綁定discord
+      </n-tag>
+      <n-button
+        @click="handleSubmit"
+        :loading="loading"
+        :disabled="!user.isDiscordConnected || !user.isUserCompleted"
+      >
+        新增專案
+      </n-button>
     </n-space>
   </n-space>
 </template>

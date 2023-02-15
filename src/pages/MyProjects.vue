@@ -36,12 +36,12 @@
       <template #header>
         <div class="flex justify-between">
           <h2>我開啟的專案</h2>
-          <n-spin :show="!isUserCompleted || !isDiscordConnected">
-            <template #icon></template>
-            <RouterLink :to="{ name: 'Create Project' }">
-              <n-button>新增專案</n-button>
-            </RouterLink>
-          </n-spin>
+          <RouterLink
+            :to="{ name: 'Create Project' }"
+          >
+            <n-button>新增專案</n-button>
+          </RouterLink>
+          
         </div>
       </template>
       <n-space vertical>
@@ -62,14 +62,6 @@
 import { useUserStore } from "../store/user";
 
 const user = useUserStore();
-
-const isUserCompleted = computed(() => {
-  return user.userData.name !== "" && user.userData.phone !== "";
-});
-
-const isDiscordConnected = computed(() => {
-  return user.discordData !== null;
-});
 
 const handleOpen = (url: string) => {
   window.open(url);
