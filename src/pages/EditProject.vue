@@ -19,6 +19,14 @@
         show-count
       />
     </div>
+    <div class="flex flex-col gap-1">
+      <span>專案連結(ex: 投影片)</span>
+      <n-input
+        placeholder="專案連結(ex: 投影片)"
+        v-model:value="link"
+        :disabled="loading"
+      />
+    </div>
     <n-space justify="end">
       <n-button @click="handleSubmit" :loading="loading">編輯專案</n-button>
     </n-space>
@@ -41,6 +49,7 @@ const project = computed(() =>
 
 const name = ref(project?.value.name);
 const description = ref(project?.value.description);
+const link = ref(project?.value.link);
 
 const handleSubmit = async () => {
   loading.value = true;
@@ -48,6 +57,7 @@ const handleSubmit = async () => {
     await user.editProject(
       name.value,
       description.value,
+      link.value,
       route.query.id as string
     );
     message.success("成功編輯專案");

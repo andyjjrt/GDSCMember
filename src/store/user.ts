@@ -138,20 +138,26 @@ export const useUserStore = defineStore("user", {
       if (!success) throw new Error(data);
       this.joinedProjects = data;
     },
-    async createProject(name: string, description: string) {
+    async createProject(name: string, description: string, link: string) {
       const response = await fetchApi("post", {
         data: {
           uid: this.getId,
           type: "createProject",
           name: name,
           description: description,
+          link: link,
         },
       });
       const { data, success } = response.data;
       if (!success) throw new Error(data);
       this.createdProjects = [...this.createdProjects, data];
     },
-    async editProject(name: string, description: string, id: string) {
+    async editProject(
+      name: string,
+      description: string,
+      link: string,
+      id: string
+    ) {
       const response = await fetchApi("post", {
         data: {
           uid: this.getId,
@@ -159,12 +165,13 @@ export const useUserStore = defineStore("user", {
           name: name,
           description: description,
           id: id,
+          link: link,
         },
       });
       const { data, success } = response.data;
       if (!success) throw new Error(data);
       this.createdProjects = this.createdProjects.map((project: any) => {
-        if (project.id === data.id) return data;
+        if (project.id === data.id) return { ...project, data };
         return project;
       });
     },

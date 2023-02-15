@@ -56,6 +56,47 @@
       <n-statistic label="已繳金額">{{ userData.paidCount }}</n-statistic>
     </div>
     <n-divider />
+    <n-space vertical v-if="userData.oldMember">
+      <h3 class="text-xl">上學期資料</h3>
+      <div class="flex gap-2">
+        <span
+          class="flex items-center text-green-600 text-xl"
+          v-if="userData.oldMember.name === userData.user.name"
+        >
+          <IconFinished />
+        </span>
+        <span class="flex items-center text-red-500 text-xl" v-else>
+          <IconNotFinished />
+        </span>
+        <span>姓名: {{ userData.oldMember.name }}</span>
+      </div>
+      <div class="flex gap-2">
+        <span
+          class="flex items-center text-green-600 text-xl"
+          v-if="userData.oldMember.email === userData.user.email"
+        >
+          <IconFinished />
+        </span>
+        <span class="flex items-center text-red-500 text-xl" v-else>
+          <IconNotFinished />
+        </span>
+        <span>email: {{ userData.oldMember.email || "無資料" }}</span>
+      </div>
+      <div class="flex gap-2">
+        <span
+          class="flex items-center text-green-600 text-xl"
+          v-if="userData.oldMember.studentId === userData.user.studentId"
+        >
+          <IconFinished />
+        </span>
+        <span class="flex items-center text-red-500 text-xl" v-else>
+          <IconNotFinished />
+        </span>
+        <span>學號: {{ userData.oldMember.studentId || "無資料" }}</span>
+      </div>
+    </n-space>
+    <n-alert v-else type="info" title="無上學期社員資訊"></n-alert>
+    <n-divider />
     <n-card>
       <form @submit="handlePayment">
         <n-space vertical>
@@ -92,6 +133,7 @@
         </n-space>
       </form>
     </n-card>
+    <n-alert type="info" title="上學期社費抵免請分開紀錄"></n-alert>
   </n-space>
 </template>
 
@@ -121,7 +163,7 @@ const identity = computed(() => {
       type: "社員",
       count: payCount["社員"],
     };
-  } else if (userData.value.paid > payCount["會員"]) {
+  } else if (userData.value.paidCount >= payCount["會員"]) {
     return {
       type: "會員",
       count: payCount["會員"],

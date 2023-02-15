@@ -18,6 +18,18 @@
         <template #header-extra>{{ project.leader }}</template>
         <n-space vertical>
           {{ project.description }}
+          <n-popconfirm
+            :negative-text="null"
+            @positive-click="handleOpen(project.link)"
+          >
+            <template #trigger>
+              <n-button text tag="a" type="primary">專案連結</n-button>
+            </template>
+            <template #default>
+              即將前往: {{ project.link }}<br />
+              此網站由{{ project.name }}提供，請留意網路安全
+            </template>
+          </n-popconfirm>
           <EnterProjectButton :id="project.id" />
         </n-space>
       </n-card>
@@ -64,4 +76,8 @@ onMounted(async () => {
   }
   projects.value = data;
 });
+
+const handleOpen = (url: string) => {
+  window.open(url);
+};
 </script>

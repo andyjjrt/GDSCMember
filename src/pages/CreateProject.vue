@@ -19,6 +19,14 @@
         show-count
       />
     </div>
+    <div class="flex flex-col gap-1">
+      <span>專案連結(ex: 投影片)</span>
+      <n-input
+        placeholder="專案連結(ex: 投影片)"
+        v-model:value="link"
+        :disabled="loading"
+      />
+    </div>
     <n-space justify="end">
       <n-button @click="handleSubmit" :loading="loading">新增專案</n-button>
     </n-space>
@@ -34,12 +42,13 @@ const message = useMessage();
 const router = useRouter();
 const name = ref("");
 const description = ref("");
+const link = ref("");
 const loading = ref(false);
 
 const handleSubmit = async () => {
   loading.value = true;
   try {
-    await user.createProject(name.value, description.value);
+    await user.createProject(name.value, description.value, link.value);
     message.success("成功新增專案");
     router.push({ name: "My Projects" });
   } catch (e: any) {
