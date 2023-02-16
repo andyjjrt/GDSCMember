@@ -89,7 +89,7 @@ const handleSubmit = async () => {
   }
   if (
     form.inSchool &&
-    !validate("^1(0[6-9]|1[0-2])([1-7]|Z)(0|5)[0-9]{4}$", form.studentId)
+    !validate("^1(0[6-9]|1[0-2])(([1-7])(0|5)|ZU)[0-9]{4}$", form.studentId)
   ) {
     message.error("學號格式錯誤");
     return;
