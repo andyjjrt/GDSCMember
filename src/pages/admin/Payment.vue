@@ -139,9 +139,9 @@
 
 <script setup lang="ts">
 import { useLoadingBar, useMessage } from "naive-ui";
-import { useUserStore } from "../store/user";
-import { fetchApi } from "../utils/api";
-import { payCount } from "../utils/paycount";
+import { useUserStore } from "../../store/user";
+import { fetchApi } from "../../utils/api";
+import { payCount } from "../../utils/paycount";
 
 const route = useRoute();
 const message = useMessage();

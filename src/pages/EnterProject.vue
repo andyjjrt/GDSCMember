@@ -19,11 +19,14 @@
         <n-space vertical>
           {{ project.description }}
           <n-popconfirm
+            width="trigger"
             :negative-text="null"
             @positive-click="handleOpen(project.link)"
           >
             <template #trigger>
-              <n-button text tag="a" type="primary">專案連結</n-button>
+              <div class="w-full">
+                <n-button text tag="a" type="primary">專案連結</n-button>
+              </div>
             </template>
             <template #default>
               即將前往: {{ project.link }}<br />

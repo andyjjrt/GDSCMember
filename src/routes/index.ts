@@ -9,7 +9,8 @@ import CreateProject from "../pages/CreateProject.vue";
 import EnterProject from "../pages/EnterProject.vue";
 import EditProject from "../pages/EditProject.vue";
 import Login from "../pages/Login.vue";
-import Payment from "../pages/Payment.vue"
+import Payment from "../pages/admin/Payment.vue"
+import Log from "../pages/admin/Log.vue"
 import NotFound from "../pages/NotFound.vue";
 
 import DiscordAuthCallback from "../pages/authCallback/Discord.vue";
@@ -163,6 +164,7 @@ const routes = [
 
   { path: "/login", name: "Login", component: Login },
   { path: "/payment", name: "Payment", component: Payment },
+  { path: "/log", name: "Log", component: Log },
   {
     path: "/auth/callback",
     children: [
