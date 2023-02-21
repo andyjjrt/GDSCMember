@@ -114,17 +114,25 @@ url: https://member.andyjjrt.cc
 
 # **身為專案主持人，你需要...**
 
+<v-clicks>
+
 - 兩周開一次會
 - 負責專案運作
 - 有權移除專案社員資格
+
+</v-clicks>
 
 ---
 
 # **身為社員，你需要...**
 
+<v-clicks>
+
 - 配合專案進度
 - 參與mentor時間
 - 期末成發(5/31@綜院401~403)
+
+</v-clicks>
 
 ---
 layout: cover
