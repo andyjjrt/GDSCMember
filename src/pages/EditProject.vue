@@ -28,7 +28,7 @@
       />
     </div>
     <n-space justify="end">
-      <n-button @click="handleSubmit" :loading="loading">編輯專案</n-button>
+      <n-button @click="handleSubmit" :loading="loading">儲存專案</n-button>
     </n-space>
   </n-space>
 </template>
