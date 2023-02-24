@@ -9,8 +9,10 @@ import CreateProject from "../pages/CreateProject.vue";
 import EnterProject from "../pages/EnterProject.vue";
 import EditProject from "../pages/EditProject.vue";
 import Login from "../pages/Login.vue";
-import Payment from "../pages/admin/Payment.vue"
-import Log from "../pages/admin/Log.vue"
+import Admin from "../pages/admin/Index.vue";
+import Payment from "../pages/admin/Payment.vue";
+import Log from "../pages/admin/Log.vue";
+import AdminProjects from "../pages/admin/Projects.vue"
 import NotFound from "../pages/NotFound.vue";
 
 import DiscordAuthCallback from "../pages/authCallback/Discord.vue";
@@ -121,7 +123,7 @@ const routes = [
                 name: "Home",
               },
             },
-    
+
             {
               text: "My Projects",
               to: {
@@ -146,7 +148,7 @@ const routes = [
                 name: "Home",
               },
             },
-    
+
             {
               text: "My Projects",
               to: {
@@ -161,10 +163,62 @@ const routes = [
       },
     ],
   },
-
+  {
+    path: "/admin",
+    children: [
+      {
+        path: "",
+        name: "Admin",
+        component: Admin,
+        meta: {
+          breadCrumb: [
+            {
+              text: "Admin",
+            },
+          ],
+        },
+      },
+      {
+        path: "log",
+        name: "Log",
+        component: Log,
+        meta: {
+          breadCrumb: [
+            {
+              text: "Admin",
+              to: {
+                name: "Admin",
+              },
+            },
+            {
+              text: "Log",
+            },
+          ],
+        },
+      },
+      {
+        path: "projects",
+        name: "AdminProjects",
+        component: AdminProjects,
+        meta: {
+          breadCrumb: [
+            {
+              text: "Admin",
+              to: {
+                name: "Admin",
+              },
+            },
+            {
+              text: "Projects",
+            },
+          ],
+        },
+      },
+    ],
+  },
   { path: "/login", name: "Login", component: Login },
   { path: "/payment", name: "Payment", component: Payment },
-  { path: "/log", name: "Log", component: Log },
+
   {
     path: "/auth/callback",
     children: [
