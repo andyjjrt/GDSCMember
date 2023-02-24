@@ -26,7 +26,7 @@ jobs:
       - name: Install & Build # 執行指令
         run: |
           npm install
-          npm run generate
+          npm run build
       - name: Duplicate index.html
         run: |
           cp ./dist/index.html ./dist/404.html
