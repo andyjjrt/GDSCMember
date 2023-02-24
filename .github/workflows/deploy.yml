@@ -26,6 +26,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Init env file
+        env:
+          VITE_API_ENDPOINT: ${{ secrets.VITE_API_ENDPOINT }}
+        run: |
+          echo "VITE_API_ENDPOINT=$VITE_API_ENDPOINT" > .env
+
       - name: Install & Build # 執行指令
         run: |
           npm install
