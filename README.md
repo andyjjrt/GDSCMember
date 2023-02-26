@@ -20,7 +20,7 @@ VITE_API_ENDPOINT=************
 pnpm run dev
 ```
 
-## Build for prodiction
+## Build for production
 ```
 pnpm run build
 ```
