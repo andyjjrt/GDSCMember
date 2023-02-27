@@ -1,6 +1,6 @@
 <template>
   <div class="h-full w-full flex justify-center items-center">
-    <n-result title="GDSC NCCU" description="社員登錄平台">
+    <n-result title="GDSC NCCU">
       <template #icon>
         <img :src="Logo" width="150" />
       </template>

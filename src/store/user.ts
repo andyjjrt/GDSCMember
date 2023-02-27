@@ -11,6 +11,9 @@ export const useUserStore = defineStore("user", {
     joinedProjects: null as any,
     paid: 0,
     appReady: false,
+    isCore: false,
+    isFullYear: false,
+    isLastSemester: false,
   }),
   getters: {
     getAvatar(state) {
@@ -77,6 +80,9 @@ export const useUserStore = defineStore("user", {
             this.createdProjects = data.createdProjects;
             this.joinedProjects = data.joinedProjects;
             this.paid = data.paidCount;
+            this.isCore = data.isCore;
+            this.isLastSemester = data.isLastSemester;
+            this.isFullYear = data.isFullYear;
           }
         } else {
           this.googleData = {};

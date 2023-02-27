@@ -16,14 +16,25 @@
       <n-statistic label="應繳金額">{{ identity.count }}</n-statistic>
       <n-statistic label="已繳金額">{{ user.paid }}</n-statistic>
     </div>
-    <template v-if="identity.count < user.paid">
+    <template v-if="!user.isCore">
       <n-divider />
-      <n-alert title="您繳的社費大於應繳金額，請找幹部領取退款" type="info">
-      </n-alert>
+      <n-alert title="你是core" type="success"> </n-alert>
     </template>
-    <template v-else-if="identity.count > user.paid">
-      <n-divider />
-      <n-alert title="您的社費尚未繳齊，請找幹部補繳" type="error"> </n-alert>
+    <template v-else>
+      <template v-if="identity.count < user.paid">
+        <n-divider />
+        <n-alert title="您繳的社費大於應繳金額，請找幹部領取退款" type="info">
+        </n-alert>
+      </template>
+      <template v-else-if="identity.count > user.paid">
+        <n-divider />
+        <n-alert title="您的社費尚未繳齊，請找幹部補繳" type="error"> </n-alert>
+      </template>
+      <template v-else></template>
+      <template v-if="!user.isFullYear">
+        <n-divider />
+        <n-alert title="上學期已繳交社費" type="success"> </n-alert>
+      </template>
     </template>
   </n-card>
   <n-modal v-model:show="showModal" transform-origin="center">
@@ -47,7 +58,7 @@
 
 <script setup lang="ts">
 import { useUserStore } from "../store/user";
-import { payCount } from "../utils/paycount"
+import { payCount } from "../utils/paycount";
 
 const user = useUserStore();
 
@@ -57,12 +68,12 @@ const identity = computed(() => {
   if (user.joinedProjects.length > 0 || user.createdProjects.length > 0) {
     return {
       type: "社員",
-      count: payCount["社員"],
+      count: payCount["社員"] + (user.isLastSemester ? -200 : 0),
     };
   } else if (user.paid >= payCount["會員"]) {
     return {
       type: "會員",
-      count: payCount["會員"],
+      count: payCount["會員"] + (user.isLastSemester ? -200 : 0),
     };
   } else {
     return {

@@ -1,5 +1,5 @@
 <template>
-  <n-list>
+  <n-list class="px-2">
     <n-list-item>
       <n-thing title="Log" content-style="margin-top: 10px;"> </n-thing>
       <template #suffix>
