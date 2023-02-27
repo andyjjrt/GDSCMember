@@ -27,6 +27,20 @@
         :disabled="loading"
       />
     </div>
+    <div class="flex flex-col gap-1">
+      <span>許願mentor類別</span>
+      <n-input
+        placeholder="許願mentor類別(ex: UI/UX)"
+        :disabled="true"
+      />
+    </div>
+    <div class="flex flex-col gap-1">
+      <span>許願mentor</span>
+      <n-input
+        placeholder="許願mentor姓名"
+        :disabled="true"
+      />
+    </div>
     <n-space justify="end">
       <n-button @click="handleSubmit" :loading="loading">儲存專案</n-button>
     </n-space>
