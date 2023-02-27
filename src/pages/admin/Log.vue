@@ -1,11 +1,29 @@
 <template>
   <n-spin :show="loading">
-  <n-data-table
-    :columns="columns"
-    :data="logData"
-    :pagination="paginationOptions"
-  />
-</n-spin>
+    <n-tabs type="line" animated>
+      <n-tab-pane name="總覽" tab="總覽">
+        <n-row>
+          <n-col :span="8">
+            <n-statistic label="總數" :value="briefData.total" />
+          </n-col>
+          <n-col :span="8">
+            <n-statistic label="社員" :value="briefData.projectMember.length" />
+          </n-col>
+          <n-col :span="8">
+            <n-statistic label="會員" :value="briefData.member.length" />
+          </n-col>
+        </n-row>
+      </n-tab-pane>
+      <n-tab-pane name="社費紀錄" tab="社費紀錄">
+        <n-data-table
+          :columns="logColumns"
+          :data="logData"
+          :pagination="paginationOptions"
+        />
+      </n-tab-pane>
+      <n-tab-pane name="jay chou" tab="Jay Chou"> Qilixiang </n-tab-pane>
+    </n-tabs>
+  </n-spin>
 </template>
 
 <script lang="ts" setup>
@@ -13,25 +31,18 @@ import { h } from "vue";
 import { NButton, useMessage, useLoadingBar } from "naive-ui";
 import { useUserStore } from "../../store/user";
 import { fetchApi } from "../../utils/api";
+import { payCount } from "../../utils/paycount";
 
 const route = useRoute();
 const message = useMessage();
 const loadingbar = useLoadingBar();
-const loading = ref(false)
+const loading = ref(false);
 const user = useUserStore();
 
-const logData = ref<Row[]>([]);
+const logData = ref([]);
+const userData = ref<LogUser[]>([]);
 
-interface Row {
-  index: number;
-  name: string;
-  coreName: string;
-  time: Date;
-  count: number;
-  check: boolean;
-}
-
-const columns = [
+const logColumns = [
   {
     title: "Id",
     key: "index",
@@ -39,7 +50,7 @@ const columns = [
   {
     title: "時間",
     key: "time",
-    render(row: Row) {
+    render(row: any) {
       return new Date(row.time).toLocaleString();
     },
     sorter: "default",
@@ -47,11 +58,17 @@ const columns = [
   },
   {
     title: "姓名",
-    key: "name",
+    key: "userId",
+    render(row: any) {
+      return userData.value.find((user: any) => user.id == row.userId)?.name;
+    },
   },
   {
     title: "Core",
-    key: "coreName",
+    key: "coreId",
+    render(row: any) {
+      return userData.value.find((user: any) => user.id == row.coreId)?.name;
+    },
     sorter: "default",
     ellipsis: true,
   },
@@ -62,7 +79,7 @@ const columns = [
   {
     title: "Action",
     key: "actions",
-    render(row: Row) {
+    render(row: any) {
       return row.check
         ? "已付款"
         : h(
@@ -80,6 +97,34 @@ const columns = [
 
 const paginationOptions = { pageSize: 10 };
 
+const briefData = computed(() => {
+  return {
+    total: userData.value.length,
+    projectMember: userData.value
+      .filter(
+        (row) =>
+          (row.createdProjects.length > 0 || row.joinedProjects.length > 0) &&
+          (row.isCore ||
+            row.isFullYear ||
+            (row.isLastSemester
+              ? row.paidCount >= payCount["社員"] - 200
+              : row.paidCount >= payCount["社員"]))
+      )
+      .filter((row) => !row.isCore),
+    member: userData.value
+      .filter(
+        (row) =>
+          row.createdProjects.length === 0 &&
+          row.joinedProjects.length === 0 &&
+          (row.isCore ||
+            (row.isLastSemester
+              ? row.paidCount >= payCount["會員"] - 200
+              : row.paidCount >= payCount["會員"]))
+      )
+      .filter((row) => !row.isCore),
+  };
+});
+
 const init = async () => {
   loadingbar.start();
   loading.value = true;
@@ -96,7 +141,8 @@ const init = async () => {
     message.error(data);
     return;
   }
-  logData.value = data;
+  logData.value = data.log;
+  userData.value = data.user;
 };
 
 const handleLogCheck = async (index: number) => {

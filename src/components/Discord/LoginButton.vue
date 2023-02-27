@@ -4,7 +4,7 @@
   >
     <n-button>
       <template #icon><IconDiscord /></template>
-      Discord Login
+      綁定Discord
     </n-button>
   </a>
 </template>
