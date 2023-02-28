@@ -32,7 +32,7 @@ export const useUserStore = defineStore("user", {
       return state.appReady;
     },
     isUserCompleted(state) {
-      return state.userData.name !== "" && state.userData.phone !== "";
+      return state.userData?.name !== "" && state.userData?.phone !== "";
     },
     isDiscordConnected(state) {
       return state.discordData !== null;
@@ -162,7 +162,9 @@ export const useUserStore = defineStore("user", {
       name: string,
       description: string,
       link: string,
-      id: string
+      id: string,
+      mentorType: string,
+      mentorName: string
     ) {
       const response = await fetchApi("post", {
         data: {
@@ -172,12 +174,14 @@ export const useUserStore = defineStore("user", {
           description: description,
           id: id,
           link: link,
+          mentorType: mentorType,
+          mentorName: mentorName,
         },
       });
       const { data, success } = response.data;
       if (!success) throw new Error(data);
       this.createdProjects = this.createdProjects.map((project: any) => {
-        if (project.id === data.id) return { ...project, data };
+        if (project.id === data.id) return { ...project, ...data };
         return project;
       });
     },
