@@ -1,16 +1,16 @@
 <template>
   <n-space vertical>
-    <!-- <RouterLink to="/link-discord"> -->
-    <n-card disabled>
-      <template v-slot:header>
-        <div class="flex justify-between">
-          <div class="flex gap-2 items-center">
-            <h2>體驗社課登記 (維護中)</h2>
+    <RouterLink to="/exp-class">
+      <n-card disabled>
+        <template v-slot:header>
+          <div class="flex justify-between">
+            <div class="flex gap-2 items-center">
+              <h2>體驗社課登記</h2>
+            </div>
           </div>
-        </div>
-      </template>
-    </n-card>
-    <!-- </RouterLink> -->
+        </template>
+      </n-card>
+    </RouterLink>
     <n-divider />
     <RouterLink to="/link-discord">
       <n-card>
