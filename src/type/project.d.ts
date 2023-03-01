@@ -5,6 +5,8 @@ interface Project {
   link: string;
   members: Member[];
   name: string;
+  mentorType: string;
+  mentorName: string;
 }
 
 interface Member {
