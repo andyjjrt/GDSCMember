@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     EnterProjectButton: typeof import('./src/components/EnterProjectButton.vue')['default']
     GoogleLoginButton: typeof import('./src/components/GoogleLoginButton.vue')['default']
     HostProjectCard: typeof import('./src/components/HostProjectCard.vue')['default']
+    IconCheckin: typeof import('./src/components/Icon/Checkin.vue')['default']
     IconCreateProject: typeof import('./src/components/Icon/CreateProject.vue')['default']
     IconDiscord: typeof import('./src/components/Icon/Discord.vue')['default']
     IconEdit: typeof import('./src/components/Icon/Edit.vue')['default']

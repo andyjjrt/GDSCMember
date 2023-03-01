@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import { useUserStore } from "../store/user";
 
 import Index from "../pages/Index.vue";
-import ExpClass from "../pages/ExpClass.vue";
 import LinkDiscord from "../pages/LinkDiscord.vue";
 import User from "../pages/User.vue";
 import MyProjects from "../pages/MyProjects.vue";
@@ -27,24 +26,6 @@ const routes = [
       breadCrumb: [
         {
           text: "Home",
-        },
-      ],
-    },
-  },
-  {
-    path: "/exp-class",
-    name: "Experience Class",
-    component: ExpClass,
-    meta: {
-      breadCrumb: [
-        {
-          text: "Home",
-          to: {
-            name: "Home",
-          },
-        },
-        {
-          text: "體驗社課",
         },
       ],
     },
