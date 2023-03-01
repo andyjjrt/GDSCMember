@@ -16,7 +16,7 @@
       <n-statistic label="應繳金額">{{ identity.count }}</n-statistic>
       <n-statistic label="已繳金額">{{ user.paid }}</n-statistic>
     </div>
-    <template v-if="!user.isCore">
+    <template v-if="user.isCore">
       <n-divider />
       <n-alert title="你是core" type="success"> </n-alert>
     </template>
@@ -31,7 +31,7 @@
         <n-alert title="您的社費尚未繳齊，請找幹部補繳" type="error"> </n-alert>
       </template>
       <template v-else></template>
-      <template v-if="!user.isFullYear">
+      <template v-if="user.isFullYear">
         <n-divider />
         <n-alert title="上學期已繳交社費" type="success"> </n-alert>
       </template>
