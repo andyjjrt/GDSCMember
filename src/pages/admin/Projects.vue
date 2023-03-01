@@ -1,12 +1,15 @@
 <template>
   <n-spin :show="loading">
-    <n-collapse>
+    <n-collapse display-directive="show">
       <n-collapse-item
         v-for="item in projectData"
         :title="item.name"
         :name="item.id"
       >
-        {{ item.description }}
+        <div class="flex flex-col gap-2">
+          <span>{{ item.description }}</span>
+          <span>Mentor: {{ item.mentorType || "無" }} / {{ item.mentorName || "無" }}</span>
+        </div>
         <n-divider />
         <div class="flex flex-wrap items-center gap-2">
           <span>Leader:</span>
@@ -15,7 +18,7 @@
           </a>
         </div>
         <br />
-        <div class="flex flex-wrap  items-center gap-2">
+        <div class="flex flex-wrap items-center gap-2">
           <span>Members:</span>
           <a
             v-for="member in item.members"

@@ -20,6 +20,15 @@
           :data="logData"
           :pagination="paginationOptions"
         />
+        <n-divider />
+        <n-list class="p-2 rounded-md">
+          <n-list-item v-for="key in Object.keys(coreCount)">
+            {{ key }}
+            <template #suffix>
+              <span>{{ coreCount[key].owe }} / {{ coreCount[key].total }}</span>
+            </template>
+          </n-list-item>
+        </n-list>
       </n-tab-pane>
       <n-tab-pane name="jay chou" tab="Jay Chou"> Qilixiang </n-tab-pane>
     </n-tabs>
@@ -125,6 +134,22 @@ const briefData = computed(() => {
   };
 });
 
+const coreCount = computed(() => {
+  const coreMap: any = new Object();
+
+  logData.value.forEach((log: any) => {
+    const coreName =
+      userData.value.find((user) => user.id === log.coreId)?.name || "未知";
+    if (!coreMap.hasOwnProperty(coreName)) {
+      coreMap[coreName] = { total: 0, owe: 0 };
+    }
+    coreMap[coreName].total += log.count;
+    if (!log.check) coreMap[coreName].owe += log.count;
+  });
+
+  return coreMap;
+});
+
 const init = async () => {
   loadingbar.start();
   loading.value = true;
@@ -169,3 +194,9 @@ onMounted(() => {
   init();
 });
 </script>
+
+<style>
+.n-list-item__suffix {
+  @apply !flex-initial
+}
+</style>
