@@ -12,6 +12,20 @@
           <n-col :span="8">
             <n-statistic label="會員" :value="briefData.member.length" />
           </n-col>
+          <!-- <n-col :span="12">
+            <div class="flex flex-col">
+              <span v-for="user in briefData.memberMailList">
+                {{ user.name }} {{ user.email }}
+              </span>
+            </div>
+          </n-col>
+          <n-col :span="12">
+            <div class="flex flex-col">
+              <span v-for="user in briefData.projectMemberMailList">
+                {{ user.name }} {{ user.email }}
+              </span>
+            </div>
+          </n-col> -->
         </n-row>
       </n-tab-pane>
       <n-tab-pane name="社費紀錄" tab="社費紀錄">
@@ -131,6 +145,29 @@ const briefData = computed(() => {
               : row.paidCount >= payCount["會員"]))
       )
       .filter((row) => !row.isCore),
+    projectMemberMailList: userData.value.filter(
+      (row) =>
+        (row.createdProjects.length !== 0 || row.joinedProjects.length !== 0) &&
+        !(
+          row.isCore ||
+          row.isFullYear ||
+          (row.isLastSemester
+            ? row.paidCount >= payCount["社員"] - 200
+            : row.paidCount >= payCount["社員"])
+        )
+    ),
+    memberMailList: userData.value.filter(
+      (row) =>
+        row.createdProjects.length === 0 &&
+        row.joinedProjects.length === 0 &&
+        !(
+          row.isCore ||
+          (row.isLastSemester
+            ? row.paidCount >= payCount["會員"] - 200
+            : row.paidCount >= payCount["會員"])
+        ) &&
+        row.name !== ""
+    ),
   };
 });
 
@@ -197,6 +234,6 @@ onMounted(() => {
 
 <style>
 .n-list-item__suffix {
-  @apply !flex-initial
+  @apply !flex-initial;
 }
 </style>
