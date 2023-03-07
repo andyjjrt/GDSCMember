@@ -11,6 +11,7 @@ import EditProject from "../pages/EditProject.vue";
 import Login from "../pages/Login.vue";
 import Admin from "../pages/admin/Index.vue";
 import Payment from "../pages/admin/Payment.vue";
+import Checkin from "../pages/admin/Checkin.vue";
 import Log from "../pages/admin/Log.vue";
 import AdminProjects from "../pages/admin/Projects.vue"
 import NotFound from "../pages/NotFound.vue";
@@ -218,6 +219,7 @@ const routes = [
   },
   { path: "/login", name: "Login", component: Login },
   { path: "/payment", name: "Payment", component: Payment },
+  { path: "/checkin", name: "Checkin", component: Checkin },
 
   {
     path: "/auth/callback",

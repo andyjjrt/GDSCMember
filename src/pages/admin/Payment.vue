@@ -155,18 +155,15 @@ const payment = ref("");
 const paymentLoading = ref(false);
 
 const identity = computed(() => {
-  if (
-    userData.value.joinedProjects.length > 0 ||
-    userData.value.createdProjects.length > 0
-  ) {
+  if (user.joinedProjects.length > 0 || user.createdProjects.length > 0) {
     return {
       type: "社員",
-      count: payCount["社員"],
+      count: payCount["社員"] + (user.isLastSemester ? -200 : 0),
     };
-  } else if (userData.value.paidCount >= payCount["會員"]) {
+  } else if (user.paid >= payCount["會員"]) {
     return {
       type: "會員",
-      count: payCount["會員"],
+      count: payCount["會員"] + (user.isLastSemester ? -200 : 0),
     };
   } else {
     return {
