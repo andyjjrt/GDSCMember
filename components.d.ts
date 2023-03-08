@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AdminCheckinList: typeof import('./src/components/Admin/CheckinList.vue')['default']
     BreadCrumb: typeof import('./src/components/BreadCrumb.vue')['default']
     DiscordLoginButton: typeof import('./src/components/Discord/LoginButton.vue')['default']
     DiscordProfile: typeof import('./src/components/Discord/Profile.vue')['default']
@@ -19,6 +20,7 @@ declare module '@vue/runtime-core' {
     IconEdit: typeof import('./src/components/Icon/Edit.vue')['default']
     IconEnterProject: typeof import('./src/components/Icon/EnterProject.vue')['default']
     IconFinished: typeof import('./src/components/Icon/Finished.vue')['default']
+    IconForm: typeof import('./src/components/Icon/Form.vue')['default']
     IconNotFinished: typeof import('./src/components/Icon/NotFinished.vue')['default']
     IconPerson: typeof import('./src/components/Icon/Person.vue')['default']
     IconQrCode: typeof import('./src/components/Icon/QrCode.vue')['default']
