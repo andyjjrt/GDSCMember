@@ -112,8 +112,8 @@ const handleCheckin = async (e: Event) => {
         new Date().getFullYear().toString() +
         (new Date().getMonth() + 1 < 10 ? "0" : "") +
         (new Date().getMonth() + 1).toString() +
-        (new Date().getDate() + 1 < 10 ? "0" : "") +
-        (new Date().getDate() + 1).toString(),
+        (new Date().getDate() < 10 ? "0" : "") +
+        (new Date().getDate()).toString(),
     },
   });
   checkinLoading.value = false;

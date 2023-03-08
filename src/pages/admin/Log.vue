@@ -44,7 +44,13 @@
           </n-list-item>
         </n-list>
       </n-tab-pane>
-      <n-tab-pane name="jay chou" tab="Jay Chou"> Qilixiang </n-tab-pane>
+      <n-tab-pane name="社課簽到" tab="社課簽到">
+        <n-tabs type="line" animated>
+          <n-tab-pane :name="_class" :tab="_class" v-for="_class in classes">
+            <AdminCheckinList :userData="userData" :filterClass="_class" />
+          </n-tab-pane>
+        </n-tabs>
+      </n-tab-pane>
     </n-tabs>
   </n-spin>
 </template>
@@ -117,6 +123,8 @@ const logColumns = [
     },
   },
 ];
+
+const classes = ["20230308", "20230315", "20230322"]
 
 const paginationOptions = { pageSize: 10 };
 
