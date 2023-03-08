@@ -3,9 +3,14 @@ import "./style.css";
 import App from "./App.vue";
 import router from "./routes";
 import VueQrcode from "@chenfengyuan/vue-qrcode";
+import { gtag, install } from 'ga-gtag';
 
 const store = createPinia();
 const app = createApp(App);
+
+if(import.meta.env.PROD) {
+  install(import.meta.env.VITE_GA_TAG); 
+}
 
 app.use(vue3GoogleLogin, {
   clientId:

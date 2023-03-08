@@ -6,6 +6,7 @@ specifiers:
   '@vitejs/plugin-vue': ^4.0.0
   autoprefixer: ^10.4.13
   axios: ^1.2.6
+  ga-gtag: ^1.1.7
   naive-ui: ^2.34.3
   pinia: ^2.0.29
   postcss: ^8.4.21
@@ -24,6 +25,7 @@ specifiers:
 dependencies:
   '@chenfengyuan/vue-qrcode': 2.0.0_qrcode@1.5.1+vue@3.2.45
   axios: 1.2.6
+  ga-gtag: 1.1.7
   pinia: 2.0.29_prq2uz4lho2pwp6irk4cfkrxwu
   qrcode: 1.5.1
   vue: 3.2.45
@@ -1270,6 +1272,10 @@ packages:
   /function-bind/1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
     dev: true
+
+  /ga-gtag/1.1.7:
+    resolution: {integrity: sha512-fT/D87hhuNIAmEB2z9mxz88gMFYc1olpX/fETHidZ51sYJ4y6OFch8HZ0DoNWPGFw1BCHB0fqt68dUWvd8kM1Q==}
+    dev: false
 
   /gensync/1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
