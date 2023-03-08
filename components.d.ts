@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AdminCheckinList: typeof import('./src/components/Admin/CheckinList.vue')['default']
     BreadCrumb: typeof import('./src/components/BreadCrumb.vue')['default']
     DiscordLoginButton: typeof import('./src/components/Discord/LoginButton.vue')['default']
     DiscordProfile: typeof import('./src/components/Discord/Profile.vue')['default']
