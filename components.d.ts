@@ -19,6 +19,7 @@ declare module '@vue/runtime-core' {
     IconEdit: typeof import('./src/components/Icon/Edit.vue')['default']
     IconEnterProject: typeof import('./src/components/Icon/EnterProject.vue')['default']
     IconFinished: typeof import('./src/components/Icon/Finished.vue')['default']
+    IconForm: typeof import('./src/components/Icon/Form.vue')['default']
     IconNotFinished: typeof import('./src/components/Icon/NotFinished.vue')['default']
     IconPerson: typeof import('./src/components/Icon/Person.vue')['default']
     IconQrCode: typeof import('./src/components/Icon/QrCode.vue')['default']

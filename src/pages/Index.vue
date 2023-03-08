@@ -10,6 +10,16 @@
         </div>
       </template>
     </n-card>
+    <n-card class="cursor-not-allowed">
+      <template v-slot:header>
+        <div class="flex justify-between">
+          <div class="flex gap-2 items-center">
+            <IconForm />
+            <h2>表單和各式連結</h2>
+          </div>
+        </div>
+      </template>
+    </n-card>
     <n-divider />
     <RouterLink to="/link-discord">
       <n-card>
