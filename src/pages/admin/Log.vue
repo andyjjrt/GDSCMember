@@ -1,48 +1,53 @@
 <template>
   <n-spin :show="loading">
     <n-tabs type="line" animated>
-      <n-tab-pane name="總覽" tab="總覽">
-        <n-row>
-          <n-col :span="8">
-            <n-statistic label="總數" :value="briefData.total" />
-          </n-col>
-          <n-col :span="8">
-            <n-statistic label="社員" :value="briefData.projectMember.length" />
-          </n-col>
-          <n-col :span="8">
-            <n-statistic label="會員" :value="briefData.member.length" />
-          </n-col>
-          <!-- <n-col :span="12">
-            <div class="flex flex-col">
-              <span v-for="user in briefData.memberMailList">
-                {{ user.name }} {{ user.email }}
-              </span>
-            </div>
-          </n-col>
-          <n-col :span="12">
-            <div class="flex flex-col">
-              <span v-for="user in briefData.projectMemberMailList">
-                {{ user.name }} {{ user.email }}
-              </span>
-            </div>
-          </n-col> -->
-        </n-row>
+      <n-tab-pane name="社員名冊" tab="社員名冊">
+        <n-tabs type="line" animated>
+          <n-tab-pane
+            name="社員"
+            :tab="`社員 (${briefData.projectMember.length}人)`"
+          >
+            <AdminUserList :userData="briefData.projectMember" />
+          </n-tab-pane>
+          <n-tab-pane name="會員" :tab="`會員 (${briefData.member.length}人)`">
+            <AdminUserList :userData="briefData.member" />
+          </n-tab-pane>
+          <n-tab-pane
+            name="沒繳錢的社員"
+            :tab="`沒繳錢的社員 (${briefData.projectMemberMailList.length}人)`"
+          >
+            <AdminUserList :userData="briefData.projectMemberMailList" />
+          </n-tab-pane>
+          <n-tab-pane
+            name="潛在會員"
+            :tab="`潛在會員 (${briefData.memberMailList.length}人)`"
+          >
+            <AdminUserList :userData="briefData.memberMailList" />
+          </n-tab-pane>
+        </n-tabs>
       </n-tab-pane>
       <n-tab-pane name="社費紀錄" tab="社費紀錄">
-        <n-data-table
-          :columns="logColumns"
-          :data="logData"
-          :pagination="paginationOptions"
-        />
-        <n-divider />
-        <n-list class="p-2 rounded-md">
-          <n-list-item v-for="key in Object.keys(coreCount)">
-            {{ key }}
-            <template #suffix>
-              <span>{{ coreCount[key].owe }} / {{ coreCount[key].total }}</span>
-            </template>
-          </n-list-item>
-        </n-list>
+        <n-tabs type="line" animated>
+          <n-tab-pane name="Log" tab="Log">
+            <n-data-table
+              :columns="logColumns"
+              :data="logData"
+              :pagination="paginationOptions"
+            />
+          </n-tab-pane>
+          <n-tab-pane name="社費概述" tab="社費概述">
+            <n-list class="p-2 rounded-md">
+              <n-list-item v-for="key in Object.keys(coreCount)">
+                {{ key }}
+                <template #suffix>
+                  <span
+                    >{{ coreCount[key].owe }} / {{ coreCount[key].total }}</span
+                  >
+                </template>
+              </n-list-item>
+            </n-list>
+          </n-tab-pane>
+        </n-tabs>
       </n-tab-pane>
       <n-tab-pane name="社課簽到" tab="社課簽到">
         <n-tabs type="line" animated>
@@ -124,7 +129,7 @@ const logColumns = [
   },
 ];
 
-const classes = ["20230308", "20230315", "20230322"]
+const classes = ["20230308", "20230315", "20230322"];
 
 const paginationOptions = { pageSize: 10 };
 
