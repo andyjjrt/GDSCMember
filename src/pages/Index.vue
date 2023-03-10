@@ -10,12 +10,24 @@
         </div>
       </template>
     </n-card>
+    <RouterLink to="/records">
+      <n-card>
+        <template v-slot:header>
+          <div class="flex justify-between">
+            <div class="flex gap-2 items-center">
+              <Icon icon="mdi:file-document-edit" />
+              <h2>社課筆記</h2>
+            </div>
+          </div>
+        </template>
+      </n-card>
+    </RouterLink>
     <n-card class="cursor-not-allowed">
       <template v-slot:header>
         <div class="flex justify-between">
           <div class="flex gap-2 items-center">
             <IconForm />
-            <h2>表單和各式連結</h2>
+            <h2>社團表單</h2>
           </div>
         </div>
       </template>
@@ -87,6 +99,7 @@
 
 <script lang="ts" setup>
 import { useUserStore } from "../store/user";
+import { Icon } from "@iconify/vue";
 
 const user = useUserStore();
 
