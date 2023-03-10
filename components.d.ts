@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     BreadCrumb: typeof import('./src/components/BreadCrumb.vue')['default']
     DiscordLoginButton: typeof import('./src/components/Discord/LoginButton.vue')['default']
     DiscordProfile: typeof import('./src/components/Discord/Profile.vue')['default']
+    Download: typeof import('./src/components/Download.vue')['default']
     EnterProjectButton: typeof import('./src/components/EnterProjectButton.vue')['default']
     GoogleLoginButton: typeof import('./src/components/GoogleLoginButton.vue')['default']
     HostProjectCard: typeof import('./src/components/HostProjectCard.vue')['default']

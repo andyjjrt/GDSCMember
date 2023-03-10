@@ -15,6 +15,7 @@ import Checkin from "../pages/admin/Checkin.vue";
 import Log from "../pages/admin/Log.vue";
 import AdminProjects from "../pages/admin/Projects.vue"
 import NotFound from "../pages/NotFound.vue";
+import Records from "../pages/Records.vue"
 
 import DiscordAuthCallback from "../pages/authCallback/Discord.vue";
 
@@ -163,6 +164,24 @@ const routes = [
         },
       },
     ],
+  },
+  {
+    path: "/records",
+    name: "Records",
+    component: Records,
+    meta: {
+      breadCrumb: [
+        {
+          text: "Home",
+          to: {
+            name: "Home",
+          },
+        },
+        {
+          text: "Records",
+        },
+      ],
+    },
   },
   {
     path: "/admin",
