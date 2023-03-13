@@ -7,8 +7,21 @@
         :name="item.id"
       >
         <div class="flex flex-col gap-2">
-          <span>{{ item.description }}</span>
-          <span>Mentor: {{ item.mentorType || "無" }} / {{ item.mentorName || "無" }}</span>
+          <span class="flex items-center gap-2"
+            >{{ item.description }}
+            <n-button
+              text
+              tag="a"
+              :href="item.link"
+              target="_blank"
+            >
+              <Icon class="text-xl" icon="material-symbols:link" />
+            </n-button>
+          </span>
+          <span
+            >Mentor: {{ item.mentorType || "無" }} /
+            {{ item.mentorName || "無" }}</span
+          >
         </div>
         <n-divider />
         <div class="flex flex-wrap items-center gap-2">
@@ -35,7 +48,7 @@
 </template>
 
 <script lang="ts" setup>
-import { h } from "vue";
+import { Icon } from "@iconify/vue";
 import { NButton, useMessage, useLoadingBar } from "naive-ui";
 import { useUserStore } from "../../store/user";
 import { fetchApi } from "../../utils/api";
