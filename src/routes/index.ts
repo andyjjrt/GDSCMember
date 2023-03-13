@@ -16,6 +16,7 @@ import Log from "../pages/admin/Log.vue";
 import AdminProjects from "../pages/admin/Projects.vue"
 import NotFound from "../pages/NotFound.vue";
 import Records from "../pages/Records.vue"
+import Forms from "../pages/Forms.vue"
 
 import DiscordAuthCallback from "../pages/authCallback/Discord.vue";
 
@@ -179,6 +180,24 @@ const routes = [
         },
         {
           text: "Records",
+        },
+      ],
+    },
+  },
+  {
+    path: "/forms",
+    name: "Forms",
+    component: Forms,
+    meta: {
+      breadCrumb: [
+        {
+          text: "Home",
+          to: {
+            name: "Home",
+          },
+        },
+        {
+          text: "Forms",
         },
       ],
     },
