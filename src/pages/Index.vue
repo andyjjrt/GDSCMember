@@ -22,8 +22,9 @@
         </template>
       </n-card>
     </RouterLink>
-    <n-card class="cursor-not-allowed">
-      <template v-slot:header>
+    <RouterLink to="/forms">
+      <n-card>
+        <template v-slot:header>
         <div class="flex justify-between">
           <div class="flex gap-2 items-center">
             <IconForm />
@@ -31,7 +32,8 @@
           </div>
         </div>
       </template>
-    </n-card>
+      </n-card>
+    </RouterLink>
     <n-divider />
     <RouterLink to="/link-discord">
       <n-card>
