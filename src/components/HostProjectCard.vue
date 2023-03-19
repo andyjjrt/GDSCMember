@@ -71,7 +71,7 @@ const props = defineProps({
 const message = useMessage();
 
 const shareUrl = computed(
-  () => "https://member.andyjjrt.cc/projects/enter?id=" + props.project.id
+  () => "https://member.gdscnccu.com/projects/enter?id=" + props.project.id
 );
 
 const copyToClipboard = () => {
