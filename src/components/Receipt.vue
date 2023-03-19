@@ -85,7 +85,7 @@ const identity = computed(() => {
 
 const paymentUrl = computed(() => {
   return `${
-    import.meta.env.DEV ? "http://localhost:3000" : "https://member.andyjjrt.cc"
+    import.meta.env.DEV ? "http://localhost:3000" : "https://member.gdscnccu.com"
   }/payment?id=${user.getId}`;
 });
 </script>

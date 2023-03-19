@@ -109,7 +109,7 @@ const showModal = ref(false);
 
 const checkinUrl = computed(() => {
   return `${
-    import.meta.env.DEV ? "http://localhost:3000" : "https://member.andyjjrt.cc"
+    import.meta.env.DEV ? "http://localhost:3000" : "https://member.gdscnccu.com"
   }/checkin?id=${user.getId}`;
 });
 </script>

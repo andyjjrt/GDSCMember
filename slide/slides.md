@@ -33,7 +33,7 @@ background: bg.png
 
 ---
 layout: iframe-right
-url: https://member.andyjjrt.cc/
+url: https://member.gdscnccu.com/
 transition: slide-up
 ---
 
@@ -58,7 +58,7 @@ transition: slide-up
 
 ---
 layout: iframe-right
-url: https://member.andyjjrt.cc/projects
+url: https://member.gdscnccu.com/projects
 transition: slide-up
 ---
 
@@ -77,7 +77,7 @@ transition: slide-up
 
 ---
 layout: iframe-right
-url: https://member.andyjjrt.cc/projects/enter
+url: https://member.gdscnccu.com/projects/enter
 transition: slide-up
 ---
 
@@ -92,7 +92,7 @@ transition: slide-up
 
 ---
 layout: iframe-right
-url: https://member.andyjjrt.cc
+url: https://member.gdscnccu.com
 ---
 
 ## **社費繳交**
