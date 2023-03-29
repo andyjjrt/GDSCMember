@@ -129,7 +129,7 @@ const logColumns = [
   },
 ];
 
-const classes = ["20230308", "20230315", "20230322"];
+const classes = ["20230308", "20230315", "20230322", "20230329", "20230426"];
 
 const paginationOptions = { pageSize: 10 };
 
